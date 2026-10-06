@@ -1,0 +1,2 @@
+# socsiety
+psichology 
