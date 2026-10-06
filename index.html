@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Соцсети и самооценка — как не потерять себя онлайн</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2;
+  --bg-soft:#f3ede4;
+  --card:#ffffff;
+  --ink:#4a4440;
+  --ink-soft:#7d746e;
+  --accent:#c9a98c;
+  --accent-soft:#e8d9c9;
+  --sage:#b8c4b0;
+  --sage-soft:#e4e9df;
+  --rose:#d8b4b4;
+  --rose-soft:#f2e3e3;
+  --sky:#aec6cf;
+  --sky-soft:#e2ecef;
+  --radius:22px;
+  --shadow:0 10px 30px rgba(74,68,64,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fredoka',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+/* ---------- header ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  backdrop-filter:blur(12px);
+  background:rgba(250,247,242,.85);
+  border-bottom:1px solid rgba(74,68,64,.06);
+}
+.nav{
+  max-width:1100px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.05rem;color:var(--ink)}
+.logo .dot{width:34px;height:34px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent-soft),var(--sage-soft));
+  display:grid;place-items:center;font-size:1.1rem}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{
+  text-decoration:none;color:var(--ink-soft);font-weight:500;font-size:.92rem;
+  padding:8px 14px;border-radius:999px;transition:.25s;
+}
+.nav-links a:hover{background:var(--accent-soft);color:var(--ink)}
+/* ---------- hero ---------- */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:120px 24px 60px;position:relative;
+  background:
+    radial-gradient(600px 400px at 15% 20%, var(--rose-soft), transparent 60%),
+    radial-gradient(700px 500px at 85% 75%, var(--sky-soft), transparent 60%),
+    radial-gradient(500px 400px at 70% 15%, var(--sage-soft), transparent 60%),
+    var(--bg);
+}
+.hero-inner{max-width:900px;text-align:center}
+.badge{
+  display:inline-block;background:var(--card);border:1px solid var(--accent-soft);
+  color:var(--ink-soft);padding:8px 18px;border-radius:999px;font-size:.85rem;
+  font-weight:500;box-shadow:var(--shadow);margin-bottom:24px;
+}
+h1{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:600;line-height:1.15;margin-bottom:20px}
+h1 .grad{
+  background:linear-gradient(120deg,var(--accent),#a98f9d,var(--sage));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.lead{max-width:640px;margin:0 auto 34px;color:var(--ink-soft);font-size:1.12rem;font-weight:400}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:600;font-size:1rem;
+  padding:14px 32px;border-radius:999px;transition:.25s;border:none;cursor:pointer;
+  font-family:'Fredoka',sans-serif;
+}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:var(--accent);color:var(--ink);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--ink);border:2px solid var(--accent-soft)}
+.btn-ghost:hover{background:var(--accent-soft)}
+.hero-stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:52px}
+.stat{
+  background:var(--card);border-radius:var(--radius);padding:20px 26px;
+  box-shadow:var(--shadow);min-width:150px;
+}
+.stat b{display:block;font-size:1.7rem;font-weight:600;color:var(--ink)}
+.stat span{font-size:.85rem;color:var(--ink-soft)}
+/* ---------- sections ---------- */
+section{padding:90px 24px}
+.wrap{max-width:1100px;margin:0 auto}
+.eyebrow{font-size:.85rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:600;margin-bottom:14px}
+.sub{color:var(--ink-soft);max-width:640px;margin-bottom:44px;font-size:1.05rem}
+/* ---------- analysis cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.card{
+  background:var(--card);border-radius:var(--radius);padding:30px;
+  box-shadow:var(--shadow);transition:.3s;border:1px solid rgba(74,68,64,.04);
+}
+.card:hover{transform:translateY(-6px)}
+.card .icon{
+  width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  font-size:1.4rem;margin-bottom:18px;
+}
+.card h3{font-size:1.15rem;font-weight:600;margin-bottom:8px}
+.card p{color:var(--ink-soft);font-size:.95rem}
+.i-rose{background:var(--rose-soft)} .i-sage{background:var(--sage-soft)}
+.i-sky{background:var(--sky-soft)} .i-sand{background:var(--accent-soft)}
+.bar-row{margin-top:16px}
+.bar-row .lbl{display:flex;justify-content:space-between;font-size:.85rem;color:var(--ink-soft);margin-bottom:6px}
+.bar{height:10px;border-radius:99px;background:var(--bg-soft);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+/* ---------- fight section ---------- */
+.fight{background:linear-gradient(180deg,var(--bg-soft),var(--bg))}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.step{
+  counter-increment:step;background:var(--card);border-radius:var(--radius);
+  padding:30px;box-shadow:var(--shadow);position:relative;
+}
+.step::before{
+  content:counter(step,decimal-leading-zero);
+  font-size:2.6rem;font-weight:700;color:var(--accent-soft);
+  position:absolute;top:14px;right:22px;line-height:1;
+}
+.step h3{font-size:1.1rem;font-weight:600;margin-bottom:8px;padding-right:56px}
+.step p{color:var(--ink-soft);font-size:.93rem}
+/* ---------- quiz ---------- */
+.quiz-shell{
+  max-width:720px;margin:0 auto;background:var(--card);border-radius:28px;
+  box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(74,68,64,.05);
+}
+.quiz-head{padding:28px 32px 0}
+.progress{height:8px;border-radius:99px;background:var(--bg-soft);margin:18px 0 6px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--sage),var(--sky));transition:width .4s}
+.q-count{font-size:.82rem;color:var(--ink-soft);font-weight:500}
+.quiz-body{padding:22px 32px 36px;min-height:340px}
+.q-title{font-size:1.25rem;font-weight:600;margin-bottom:20px}
+.opt{
+  display:block;width:100%;text-align:left;background:var(--bg);border:2px solid transparent;
+  border-radius:16px;padding:14px 18px;margin-bottom:10px;font-family:'Fredoka',sans-serif;
+  font-size:.98rem;color:var(--ink);cursor:pointer;transition:.2s;font-weight:400;
+}
+.opt:hover{border-color:var(--accent-soft);background:#fff}
+.opt.picked{border-color:var(--accent);background:var(--accent-soft)}
+.quiz-foot{display:flex;justify-content:space-between;align-items:center;padding:0 32px 30px}
+.result{text-align:center;padding:12px 0}
+.result .emoji{font-size:3rem;margin-bottom:8px}
+.result h3{font-size:1.35rem;font-weight:600;margin-bottom:6px}
+.result .score{font-size:.95rem;color:var(--ink-soft);margin-bottom:18px}
+.result p{color:var(--ink-soft);font-size:.98rem;max-width:520px;margin:0 auto 20px;text-align:left;background:var(--bg);border-radius:16px;padding:18px 22px}
+.memo{
+  text-align:left;background:var(--sage-soft);border-radius:16px;padding:18px 22px;margin-bottom:20px;
+}
+.memo h4{font-size:1rem;font-weight:600;margin-bottom:8px}
+.memo ul{list-style:none}
+.memo li{font-size:.92rem;color:var(--ink);padding:4px 0 4px 24px;position:relative}
+.memo li::before{content:"✿";position:absolute;left:2px;color:var(--accent)}
+.hidden{display:none}
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#e9e2da;padding:44px 24px;text-align:center}
+footer p{font-size:.9rem;opacity:.8}
+footer .f-logo{font-weight:600;font-size:1.1rem;margin-bottom:8px}
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.reveal.show{opacity:1;transform:none}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .quiz-foot{flex-direction:column;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo"><span class="dot">✿</span>Баланс онлайн</div>
+    <div class="nav-links">
+      <a href="#analysis">Анализ опросов 2026</a>
+      <a href="#fight">Как справляться</a>
+      <a href="#quiz">Пройти тест</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="badge">Исследование · Памятка · Тест для учеников</div>
+    <h1>Как соцсети влияют на <span class="grad">самооценку</span> учеников</h1>
+    <p class="lead">Мягкий и честный разговор о том, что происходит с нашей самооценкой за лентой — и как вернуть себе опору внутри, а не в лайках.</p>
+    <div>
+      <a class="btn btn-primary" href="#quiz">Пройти короткий тест</a>
+      <a class="btn btn-ghost" href="#analysis" style="margin-left:10px">Смотреть анализ</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>~3 ч</b><span>в день в среднем проводят школьники в соцсетях</span></div>
+      <div class="stat"><b>1 из 3</b><span>подростков сравнивает себя с другими онлайн</span></div>
+      <div class="stat"><b>−15%</b><span>к уверенности в себе при токсичном сравнении*</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="analysis">
+  <div class="wrap">
+    <div class="eyebrow reveal">Анализ опросов · 2026</div>
+    <h2 class="reveal">Что говорят данные</h2>
+    <p class="sub reveal">Мы обобщили результаты опросов среди школьников 12–17 лет (образовательные платформы, школьные психологи, исследования цифровой гигиены 2025–2026 гг.). Цифры округлённые, для ознакомления.</p>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="icon i-rose">🪞</div>
+        <h3>Сравнение с «идеальными» образами</h3>
+        <p>Около 34% учеников признаются, что после просмотра ленты чувствуют себя хуже. Обработанные фото и «успешный успех» создают искажённую шкалу.</p>
+        <div class="bar-row"><div class="lbl"><span>чувствуют неуверенность</span><span>34%</span></div><div class="bar"><i style="width:34%;background:var(--rose)"></i></div></div>
+      </div>
+      <div class="card reveal">
+        <div class="icon i-sky">💬</div>
+        <h3>Зависимость лайков от настроения</h3>
+        <p>У 41% подростков количество реакций напрямую влияет на самочувствие в течение дня. Меньше сердечек — ниже настроение, замкнутый круг.</p>
+        <div class="bar-row"><div class="lbl"><span>настроение зависит от лайков</span><span>41%</span></div><div class="bar"><i style="width:41%;background:var(--sky)"></i></div></div>
+      </div>
+      <div class="card reveal">
+        <div class="icon i-sage">🌙</div>
+        <h3>Сон и тревожность</h3>
+        <p>Скроллинг перед сном у 58% опрошенных сдвигает время отхода ко сну позже полуночи, что усиливает тревогу и раздражительность.</p>
+        <div class="bar-row"><div class="lbl"><span>засыпают после полуночи</span><span>58%</span></div><div class="bar"><i style="width:58%;background:var(--sage)"></i></div></div>
+      </div>
+      <div class="card reveal">
+        <div class="icon i-sand">🤝</div>
+        <h3>Травля и исключение</h3>
+        <p>Каждый пятый ученик сталкивался с негативными комментариями или травлей онлайн. Публичная критика бьёт по самооценке сильнее всего.</p>
+        <div class="bar-row"><div class="lbl"><span>сталкивались с буллингом</span><span>21%</span></div><div class="bar"><i style="width:21%;background:var(--accent)"></i></div></div>
+      </div>
+      <div class="card reveal">
+        <div class="icon i-sky">📵</div>
+        <h3>Цифровой детокс помогает</h3>
+        <p>Среди тех, кто регулярно устраивает дни без соцсетей, 67% отмечают рост спокойствия и лучший сон уже через две недели.</p>
+        <div class="bar-row"><div class="lbl"><span>отметили улучшение</span><span>67%</span></div><div class="bar"><i style="width:67%;background:var(--sky)"></i></div></div>
+      </div>
+      <div class="card reveal">
+        <div class="icon i-sage">🌱</div>
+        <h3>Поддержка рядом</h3>
+        <p>Ученики, которые обсуждают свой онлайн-опыт с друзьями или взрослыми, реже сравнивают себя с другими и увереннее чувствуют себя в классе.</p>
+        <div class="bar-row"><div class="lbl"><span>обсуждают опыт открыто</span><span>29%</span></div><div class="bar"><i style="width:29%;background:var(--sage)"></i></div></div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:var(--ink-soft);margin-top:26px">*Обобщённые данные образовательных опросов и исследований цифрового благополучия 2025–2026 гг. Демонстрационные значения.</p>
+  </div>
+</section>
+
+<section id="fight" class="fight">
+  <div class="wrap">
+    <div class="eyebrow reveal">Практика</div>
+    <h2 class="reveal">Как вернуть себе опору</h2>
+    <p class="sub reveal">Простые привычки, которые реально работают. Начните с одной — не нужно менять всё за день.</p>
+    <div class="steps">
+      <div class="step reveal"><h3>Правило «первых 30 минут»</h3><p>Не открывайте соцсети сразу после пробуждения. Первый час дня — ваш: вода, зарядка, завтрак без экрана.</p></div>
+      <div class="step reveal"><h3>Лимит осознанности</h3><p>Включите встроенный таймер приложений (15–30 минут). Ограничение не наказание, а забота о внимании.</p></div>
+      <div class="step reveal"><h3>Скролл-стоп перед сном</h3><p>Час без экрана до сна. Читайте бумажную книгу или слушайте музыку — мозг отдыхает, тревога снижается.</p></div>
+      <div class="step reveal"><h3>Чистка ленты</h3><p>Отпишитесь от аккаунтов, после которых вам плохо. Подпишитесь на образование, юмор, хобби — то, что питает.</p></div>
+      <div class="step reveal"><h3>День офлайн в неделю</h3><p>Один день без ленты: прогулка, спорт, встреча с друзьями вживую. Заметьте, как меняется самочувствие.</p></div>
+      <div class="step reveal"><h3>Дневник «как я на самом деле»</h3><p>Раз в неделю записывайте 3 вещи, которыми вы гордитесь вне соцсетей. Самооценка растёт от реальных дел.</p></div>
+      <div class="step reveal"><h3>Поговорите с кем-то</h3><p>Классный руководитель, школьный психолог, родители, друг. Поделиться — уже половина решения.</p></div>
+      <div class="step reveal"><h3>Помните про фильтры</h3><p>За каждым «идеальным» фото — десятки дублей, ретушь и постановка. Вы сравниваете свой обычный день с чужим монтажом.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="text-align:center">Интерактив</div>
+    <h2 class="reveal" style="text-align:center">Проверь себя: лёгкий тест</h2>
+    <p class="sub reveal" style="margin:0 auto 44px;text-align:center">8 простых вопросов без правильных ответов — честно отметь, что ближе тебе.</p>
+
+    <div class="quiz-shell reveal">
+      <div class="quiz-head">
+        <div class="progress"><i id="pbar"></i></div>
+        <div class="q-count" id="qcount">Вопрос 1 из 8</div>
+      </div>
+      <div class="quiz-body" id="quizBody"></div>
+      <div class="quiz-foot" id="quizFoot">
+        <button class="btn btn-ghost" id="prevBtn" style="visibility:hidden">← Назад</button>
+        <button class="btn btn-primary" id="nextBtn">Далее →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">✿ Баланс онлайн</div>
+  <p>Сделано с заботой о цифровом благополучии учеников · 2026</p>
+</footer>
+
+<script>
+const questions=[
+ {q:"Как часто ты заходишь в соцсети без особой причины — просто «проверить»?",opts:[
+  ["Почти никогда, только когда реально нужно",0],
+  ["Иногда, пару раз в день",1],
+  ["Часто, рука сама тянется к телефону",2],
+  ["Постоянно, даже во время разговоров и еды",3]]},
+ {q:"Как ты чувствуешь себя после просмотра ленты?",opts:[
+  ["Нормально, никаких изменений",0],
+  ["Иногда появляется лёгкое сравнение себя с другими",1],
+  ["Часто кажется, что у всех жизнь лучше моей",2],
+  ["Почти всегда настроение ухудшается, я злюсь или грущу",3]]},
+ {q:"Как сильно твоё настроение зависит от лайков и комментариев?",opts:[
+  ["Независит вообще",0],
+  ["Чуть-чуть приятно, когда много реакций",1],
+  ["Замечаю, что серьёзно расстраиваюсь без них",2],
+  ["День «испорчен», если пост собрал мало лайков",3]]},
+ {q:"Когда ты последний раз проводил(а) день полностью без соцсетей?",opts:[
+  ["На этой неделе — без проблем",0],
+  ["Несколько недель назад",1],
+  ["Пару месяцев назад, это было сложно",2],
+  ["Не помню такого дня",3]]},
+ {q:"Что ты делаешь перед сном?",opts:[
+  ["Читаю/слушаю музыку, телефон лежит в стороне",0],
+  ["Чуть посижу в соцсетях, но недолго",1],
+  ["Скроллю, пока не «вырублюсь» с телефоном в руке",2],
+  ["Часто сижу до 2–3 часов ночи в ленте",3]]},
+ {q:"Как ты реагируешь на негативные комментарии или обижные мемы про себя?",opts:[
+  ["Спокойно, редко обращаю внимание",0],
+  ["Иногда задевает, но проходит быстро",1],
+  ["Сильно переживаю, долго об этом думаю",2],
+  ["Это бьёт по мне очень больно, избегаю людей из-за этого",3]]},
+ {q:"Как часто ты сравниваешь свою внешность/успехи с людьми из интернета?",opts:[
+  ["Практически никогда",0],
+  ["Иногда ловлю себя на мысли",1],
+  ["Регулярно, это стало привычкой",2],
+  ["Почти всегда, когда открываю соцсети",3]]},
+ {q:"Кому ты можешь рассказать, если тебе тяжело из-за соцсетей?",opts:[
+  ["Друзьям, родителям или психологу — есть кому сказать",0],
+  ["Пожалуй, одному близкому человеку",1],
+  ["Никому, стесняюсь и не нахожу слов",2],
+  ["Считаю, что никто не поймёт",3]]}
+];
+const results=[
+ {max:6,emoji:"🌿",title:"У тебя здоровый баланс",
+  text:"Ты уверенно контролируешь своё время онлайн и не позволяешь ленте диктовать настроение. Отличная база! Поддерживай привычки: офлайн-день в неделю и «чистая» лента.",
+  memo:["Продолжай начинать день без экрана","Раз в месяц пересматривай подписки","Делись своим опытом с друзьями — это помогает им тоже"]},
+ {max:12,emoji:"🌤",title:"Лёгкая зависимость — не критично, но стоит подвигаться",
+  text:"Соцсети уже заметно присутствуют в твоей жизни, но ты пока на шаг впереди. Добавь пару границ — и самочувствие улучшится быстро.",
+  memo:["Поставь таймер 20–30 минут на приложения","Правило: телефон не в кровати, а на столе","Один вечер в неделю — полностью офлайн"]},
+ {max:19,emoji:"🌧",title:"Соцсети заметно влияют на настроение",
+  text:"Лента уже управляет твоими эмоциями и самооценкой. Это не «слабость» — так устроены алгоритмы. Хорошая новость: несколько конкретных шагов реально меняют ситуацию за пару недель.",
+  memo:["Утро без соцсетей — первые 30 минут","Удали приложения с главного экрана, оставь только нужное","Заведи дневник: 3 реальных достижения в неделю"]},
+ {max:24,emoji:"💛",title:"Пора позаботиться о себе всерьёз",
+  text:"Твоё настроение и самооценка сильно завязаны на соцсети — и это истощает. Самое важное сейчас: не оставаться с этим наедине. Поговори с близким человеком, школьным психологом или классным руководителем.",
+  memo:["Скажи кому-то сегодня: «мне непросто с соцсетями»","Устрой 48 часов офлайн — попробуй, это возможно","Помни: твоя ценность не измеряется лайками, она есть уже сейчас"]}
+];
+let idx=0, answers=new Array(questions.length).fill(null);
+const body=document.getElementById('quizBody'),
+      pbar=document.getElementById('pbar'),
+      qcount=document.getElementById('qcount'),
+      nextBtn=document.getElementById('nextBtn'),
+      prevBtn=document.getElementById('prevBtn');
+function render(){
+  if(idx>=questions.length){showResult();return}
+  const item=questions[idx];
+  let html=`<div class="q-title">${item.q}</div>`;
+  item.opts.forEach((o,i)=>{
+    html+=`<button class="opt ${answers[idx]===i?'picked':''}" data-i="${i}">${o[0]}</button>`;
+  });
+  body.innerHTML=html;
+  qcount.textContent=`Вопрос ${idx+1} из ${questions.length}`;
+  pbar.style.width=((idx)/questions.length*100)+'%';
+  prevBtn.style.visibility=idx===0?'hidden':'visible';
+  nextBtn.textContent = idx===questions.length-1 ? 'Узнать результат ✦' : 'Далее →';
+  body.querySelectorAll('.opt').forEach(b=>{
+    b.onclick=()=>{answers[idx]=+b.dataset.i;
+      body.querySelectorAll('.opt').forEach(x=>x.classList.remove('picked'));
+      b.classList.add('picked');
+      setTimeout(()=>{ idx++; render(); },320);
+    };
+  });
+}
+nextBtn.onclick=()=>{ if(answers[idx]!==null){idx++;render();} else { body.animate([{transform:'translateX(0)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(0)'}],{duration:220}); } };
+prevBtn.onclick=()=>{ if(idx>0){idx--;render();} };
+function showResult(){
+  document.getElementById('quizFoot').classList.add('hidden');
+  qcount.textContent='Результат';
+  pbar.style.width='100%';
+  const score=answers.reduce((s,a,i)=>s+questions[i].opts[a][1],0);
+  const r=results.find(x=>score<=x.max);
+  body.innerHTML=`<div class="result">
+    <div class="emoji">${r.emoji}</div>
+    <h3>${r.title}</h3>
+    <div class="score">Твой результат: ${score} балл(ов) из 24</div>
+    <p>${r.text}</p>
+    <div class="memo"><h4>🌼 Памятка для тебя</h4><ul>${r.memo.map(m=>`<li>${m}</li>`).join('')}</ul></div>
+    <button class="btn btn-primary" onclick="restart()">Пройти ещё раз</button>
+  </div>`;
+}
+function restart(){ idx=0; answers=new Array(questions.length).fill(null);
+  document.getElementById('quizFoot').classList.remove('hidden'); render(); }
+render();
+
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
